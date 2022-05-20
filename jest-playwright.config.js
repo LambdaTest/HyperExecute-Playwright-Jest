@@ -6,8 +6,8 @@ const caps_chromium = {
   'browserVersion': 'latest',
   'LT:Options': {
     'platform': process.env.HYPEREXECUTE_PLATFORM,
-    'build': 'Playwright HyperExecute Build',
-    'name': 'Playwright HyperExecute Test',
+    'build': 'Playwright Jest HyperExecute Build',
+    'name': 'Playwright Jest HyperExecute Test',
     'user': process.env.LT_USERNAME,
     'accessKey': process.env.LT_ACCESS_KEY,
     'network': true,
