@@ -1,0 +1,12 @@
+---
+version: '0.1'
+matrix:
+  os: [win]
+  files: ["hypblogsearch.test.js","ltblogsearch.test.js","hyperexecute.test.js","lambdatest.test.js"]
+runson: ${matrix.os}
+pre:
+  - npm install
+  - npx playwright install
+cacheKey: '{{ checksum "package-lock.json" }}'
+testSuites:
+  - npm test -- $files
