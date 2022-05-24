@@ -8,5 +8,7 @@ pre:
   - npm install
   - npx playwright install
 cacheKey: '{{ checksum "package-lock.json" }}'
+cacheDirectories:
+  - node_modules
 testSuites:
   - npm test -- $files
