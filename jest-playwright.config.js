@@ -10,7 +10,7 @@ const caps_chromium = {
     'name': 'Playwright Jest HyperExecute Test',
     'user': process.env.LT_USERNAME,
     'accessKey': process.env.LT_ACCESS_KEY,
-    'network': true,
+    // 'network': true,
     'video': true,
     'console': true
   }
