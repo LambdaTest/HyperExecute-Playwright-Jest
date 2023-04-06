@@ -1,12 +1,12 @@
 {
   "name": "playwright-jest",
   "version": "1.0.0",
-  "description": "Sample package to show jest playwright tests run on BrowserStack",
+  "description": "Sample package to show jest playwright tests run on LambdaTest HyperExecute",
   "main": "sample.spec.js",
   "scripts": {
     "test": "jest"
   },
-  "author": "Sourav Kundu",
+  "author": "LambdaTest HyperExecute",
   "license": "ISC",
   "devDependencies": {
     "@playwright/test": "^1.22.1",
