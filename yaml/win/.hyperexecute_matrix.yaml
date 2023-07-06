@@ -12,3 +12,5 @@ cacheDirectories:
   - node_modules
 testSuites:
   - npm test -- $files
+
+jobLabel: [playwright-JestJS, win, matrix]
