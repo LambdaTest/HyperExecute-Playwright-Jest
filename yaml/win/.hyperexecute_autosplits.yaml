@@ -19,3 +19,5 @@ testDiscovery:
   mode: dynamic
   command: grep -lr 'describe' *.test.js
 testRunnerCommand: npm test -- $test
+
+jobLabel: [playwright-JestJS, win, autosplit]
