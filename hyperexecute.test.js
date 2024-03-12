@@ -7,8 +7,8 @@ describe("Google", () => {
     await page.goto('https://google.com')
   })
   it('title should match HyperExecute - Google Search', async () => {
-    await page.type('input[name="q"]', "HyperExecute");
-    await page.press('input[name="q"]', "Enter");
+    await page.type('textarea[name="q"]', "HyperExecute");
+    await page.press('textarea[name="q"]', "Enter");
     expect(await page.title()).toBe('HyperExecute - Google Search');
     await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({action: 'setSessionStatus',arguments: {status: 'passed',reason: 'Test assertion passed'}})}`);
   })
