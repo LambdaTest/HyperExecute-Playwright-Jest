@@ -1,326 +1,114 @@
-<img height="100" alt="hyperexecute_logo" src="https://user-images.githubusercontent.com/1688653/159473714-384e60ba-d830-435e-a33f-730df3c3ebc6.png">
+# Run Playwright Jest Tests with HyperExecute on TestMu AI (Formerly LambdaTest)
 
-HyperExecute is a smart test orchestration platform to run end-to-end Playwright tests at the fastest speed possible. HyperExecute lets you achieve an accelerated time to market by providing a test infrastructure that offers optimal speed, test orchestration, and detailed execution logs.
+<p align="center">
+  <a href="https://www.testmuai.com/"><img src="https://img.shields.io/badge/MADE%20BY%20TestMu%20AI-000000.svg?style=for-the-badge&labelColor=000" alt="Made by TestMu AI"></a>
+  <a href="https://www.npmjs.com/package/jest"><img src="https://img.shields.io/npm/v/jest.svg?style=for-the-badge&labelColor=000000" alt="Jest version"></a>
+  <a href="https://community.testmuai.com/"><img src="https://img.shields.io/badge/Join%20the%20community-blueviolet.svg?style=for-the-badge&labelColor=000000" alt="Community"></a>
+</p>
 
-The overall experience helps teams test code and fix issues at a much faster pace. HyperExecute is configured using a YAML file. Instead of moving the Hub close to you, HyperExecute brings the test scripts close to the Hub!
+## Getting Started
 
-* <b>HyperExecute HomePage</b>: https://www.lambdatest.com/hyperexecute
-* <b>Lambdatest HomePage</b>: https://www.lambdatest.com
-* <b>LambdaTest Support</b>: [support@lambdatest.com](mailto:support@lambdatest.com)
+[TestMu AI](https://www.testmuai.com/) (Formerly LambdaTest) is the world's first full-stack AI Agentic Quality Engineering platform that empowers teams to test intelligently, smarter, and ship faster. Built for scale, it offers a full-stack testing cloud with 10K+ real devices and 3,000+ browsers. With AI-native test management, MCP servers, and agent-based automation, TestMu AI supports Selenium, Appium, Playwright, and all major frameworks. 
 
-To know more about how HyperExecute does intelligent Test Orchestration, do check out [HyperExecute Getting Started Guide](https://www.lambdatest.com/support/docs/getting-started-with-hyperexecute/)
+With TestMu AI (Formerly LambdaTest), you can run Playwright Jest tests using HyperExecute. This sample shows how to configure Playwright + Jest + HyperExecute to run on the TestMu AI cloud.
 
-[<img alt="Try it now" width="200 px" align="center" src="images/Try it Now.svg" />](https://hyperexecute.lambdatest.com/?utm_source=github&utm_medium=repository&utm_content=javascript&utm_term=webdriver)
+- [Sign up on TestMu AI](https://www.testmuai.com/register/) (Formerly LambdaTest).
+- Follow the [TestMu AI Documentation](https://www.testmuai.com/support/docs/) for the full setup walkthrough.
 
-## Gitpod
+### Prerequisites
 
-Follow the below steps to run Gitpod button:
+- Node.js and npm (latest stable)
+- A [TestMu AI](https://www.testmuai.com/) account with your username and access key
+- [HyperExecute CLI](https://www.testmuai.com/support/docs/hyperexecute-cli-run-tests-on-hyperexecute-grid/) binary for your OS
 
-1. Click '**Open in Gitpod**' button (You will be redirected to Login/Signup page).
-2. Login with Lambdatest credentials and it will be redirected to Gitpod editor in new tab and current tab will show hyperexecute dashboard.
+### Setup
 
-[<img alt="Run in Gitpod" width="200 px" align="center" src="images/Gitpod.svg" />](https://hyperexecute.lambdatest.com/hyperexecute/jobs?type=gitpod&framework=Jest&frameworkType=PlayWright)
----
-<!---If logged in, it will be redirected to Gitpod editor in new tab where current tab will show hyperexecute dashboard.
-
-If not logged in, it will be redirected to Login/Signup page and simultaneously redirected to Gitpod editor in a new tab where current tab will show hyperexecute dashboard.
-
-If not signed up, you need to sign up and simultaneously redirected to Gitpod in a new tab where current tab will show hyperexecute dashboard.--->
-
-# How to run Playwright automation tests on HyperExecute (using Playwright-Jest framework)
-
-* [Pre-requisites](#pre-requisites)
-   - [Download HyperExecute CLI](#download-hyperexecute-cli)
-   - [Configure Environment Variables](#configure-environment-variables)
-
-* [Auto-Split Execution with Playwright-Jest](#auto-split-execution-with-Playwright-Jest)
-   - [Core](#core)
-   - [Pre Steps and Dependency Caching](#pre-steps-and-dependency-caching)
-   - [Artifacts Management](#artifacts-management)
-   - [Test Execution](#test-execution)
-
-* [Matrix Execution with Playwright-Jest](#matrix-execution-with-Playwright-Jest)
-   - [Core](#core-1)
-   - [Pre Steps and Dependency Caching](#pre-steps-and-dependency-caching-1)
-   - [Artifacts Management](#artifacts-management-1)
-   - [Test Execution](#test-execution-1)
-
-* [Run Playwright-Jest tests on Windows and Linux platforms](#run-Playwright-Jest-tests-on-windows-and-linux-platforms)
-* [Secrets Management](#secrets-management)
-* [Navigation in Automation Dashboard](#navigation-in-automation-dashboard)
-
-# Pre-requisites
-
-Before using HyperExecute, you have to download HyperExecute CLI corresponding to the host OS. Along with it, you also need to export the environment variables *LT_USERNAME* and *LT_ACCESS_KEY* that are available in the [LambdaTest Profile](https://accounts.lambdatest.com/detail/profile) page.
-
-## Download HyperExecute CLI
-
-HyperExecute CLI is the CLI for interacting and running the tests on the HyperExecute Grid. The CLI provides a host of other useful Tests that accelerate test execution. In order to trigger tests using the CLI, you need to download the HyperExecute CLI binary corresponding to the platform (or OS) from where the tests are triggered:
-
-Also, it is recommended to download the binary in the project's parent directory. Shown below is the location from where you can download the HyperExecute CLI binary:
-
-* Mac: https://downloads.lambdatest.com/hyperexecute/darwin/hyperexecute
-* Linux: https://downloads.lambdatest.com/hyperexecute/linux/hyperexecute
-* Windows: https://downloads.lambdatest.com/hyperexecute/windows/hyperexecute.exe
-
-## Configure Environment Variables
-
-Before the tests are run, please set the environment variables LT_USERNAME & LT_ACCESS_KEY from the terminal. The account details are available on your [LambdaTest Profile](https://accounts.lambdatest.com/detail/profile) page.
-
-For macOS:
+Clone and install dependencies:
 
 ```bash
-export LT_USERNAME=LT_USERNAME
-export LT_ACCESS_KEY=LT_ACCESS_KEY
+git clone https://github.com/LambdaTest/HyperExecute-Playwright-Jest && cd HyperExecute-Playwright-Jest
+npm install
 ```
 
-For Linux:
+Set your credentials as environment variables.
+
+**macOS / Linux:**
 
 ```bash
-export LT_USERNAME=LT_USERNAME
-export LT_ACCESS_KEY=LT_ACCESS_KEY
+export LT_USERNAME="YOUR_USERNAME"
+export LT_ACCESS_KEY="YOUR_ACCESS_KEY"
+export LT_TUNNEL="YOUR_TUNNEL_NAME"
 ```
 
-For Windows:
+**Windows:**
 
 ```bash
-set LT_USERNAME=LT_USERNAME
-set LT_ACCESS_KEY=LT_ACCESS_KEY
+set LT_USERNAME="YOUR_USERNAME"
+set LT_ACCESS_KEY="YOUR_ACCESS_KEY"
+set LT_TUNNEL="YOUR_TUNNEL_NAME"
 ```
 
-## Auto-Split Execution with Playwright-Jest
-
-Auto-split execution mechanism lets you run tests at predefined concurrency and distribute the tests over the available infrastructure. Concurrency can be achieved at different levels - file, module, test suite, test, scenario, etc.
-
-For more information about auto-split execution, check out the [Auto-Split Getting Started Guide](https://www.lambdatest.com/support/docs/getting-started-with-hyperexecute/#smart-auto-test-splitting)
-
-### Core
-
-Auto-split YAML file (*yaml/win/.hyperexecute_autosplits.yaml*) in the repo contains the following configuration:
-
-```yaml
-globalTimeout: 90
-testSuiteTimeout: 90
-testSuiteStep: 90
-```
-
-Global timeout, testSuite timeout, and testSuite timeout are set to 90 minutes.
- 
-The *runson* key determines the platform (or operating system) on which the tests are executed. Here we have set the target OS as Windows.
-
-```yaml
-runson: win
-```
-
-Auto-split is set to true in the YAML file.
-
-```yaml
- autosplit: true
-```
-
-*retryOnFailure* is set to true, instructing HyperExecute to retry failed command(s). The retry operation is carried out till the number of retries mentioned in *maxRetries* are exhausted or the command execution results in a *Pass*. In addition, the concurrency (i.e. number of parallel sessions) is set to 2.
-
-```yaml
-retryOnFailure: true
-runson: win
-maxRetries: 2
-```
-
-## Pre Steps and Dependency Caching
-
-To leverage the advantage offered by *Dependency Caching* in HyperExecute, the integrity of *package-lock.json* is checked using the checksum functionality.
-
-```yaml
-cacheKey: '{{ checksum "package-lock.json" }}'
-```
-
-The caching advantage offered by *NPM* can be leveraged in HyperExecute, whereby the downloaded packages can be stored (or cached) in a secure server for future executions. The packages available in the cache will only be used if the checksum stage results in a Pass.
-
-
-
-```yaml
-cacheDirectories:
-  - node_modules
-```
-
-The *testDiscovery* directive contains the command that gives details of the mode of execution, along with detailing the command that is used for test execution. Here, we are fetching the list of Test file scenario that would be further executed using the *value* passed in the *testRunnerCommand*
-
-```yaml
-testDiscovery:
-  type: raw
-  mode: dynamic
-  command: grep -lr 'describe' *.test.js
-testRunnerCommand: npm test -- $test
-```
-
-Running the above command on the terminal will give a list of Test Scenario lines that are located in the Project folder:
-
-Test Discovery Output:
-hypblogsearch.test.js
-hyperexecute.test.js
-lambdatest.test.js
-ltblogsearch.test.js
-
-The *testRunnerCommand* contains the command that is used for triggering the test. The output fetched from the *testDiscoverer* command acts as an input to the *testRunner* command.
-
-```yaml
-testRunnerCommand: npm test -- $test
-```
-
-
-### Artifacts Management
-
-The *mergeArtifacts* directive (which is by default *false*) is set to *true* for merging the artifacts and combing artifacts generated under each task.
-
-The *uploadArtefacts* directive informs HyperExecute to upload artifacts [files, reports, etc.] generated after task completion.  In the example, *path* consists of a regex for parsing the directory (i.e. *reports* that contains the test reports).
-
-```yaml
-mergeArtifacts: true
-
-uploadArtefacts:
-  [{
-    "name": "Reports",
-    "path": ["Reports\\"]
-  }]
-
-```
-HyperExecute also facilitates the provision to download the artifacts on your local machine. To download the artifacts, click on *Artifacts* button corresponding to the associated TestID.
-
-### Test Execution
-
-The CLI option *--config* is used for providing the custom HyperExecute YAML file (i.e. *yaml/.hyperexecute_autosplits.yaml*). Run the following command on the terminal to trigger the tests in JS files on the HyperExecute grid. The *--download-artifacts* option is used to inform HyperExecute to download the artifacts for the job.
+### Run tests
 
 ```bash
-./hyperexecute --config --verbose yaml/win/.hyperexecute_autosplits.yaml
+./hyperexecute --config yaml/win/.hyperexecute_autosplit.yaml --force-clean-artifacts --download-artifacts
 ```
 
-Visit [HyperExecute Automation Dashboard](https://automation.lambdatest.com/hyperexecute) to check the status of execution
+View results on your TestMu AI dashboard.
 
-# Matrix Execution with Playwright-Jest
+### Local testing with TestMu AI Tunnel
 
-Matrix-based test execution is used for running the same tests across different test (or input) combinations. The Matrix directive in HyperExecute YAML file is a *key:value* pair where value is an array of strings.
+To test locally hosted apps, set up the TestMu AI tunnel. OS-specific guides:
 
-Also, the *key:value* pairs are opaque strings for HyperExecute. For more information about matrix multiplexing, check out the [Matrix Getting Started Guide](https://www.lambdatest.com/support/docs/getting-started-with-hyperexecute/#matrix-based-build-multiplexing)
+- [Local Testing on Windows](https://www.testmuai.com/support/docs/local-testing-for-windows/)
+- [Local Testing on macOS](https://www.testmuai.com/support/docs/local-testing-for-macos/)
+- [Local Testing on Linux](https://www.testmuai.com/support/docs/local-testing-for-linux/)
 
-### Core
+Add the following to your capabilities:
 
-In the current example, matrix YAML file (*yaml/hyperexecute_matrix_sample.yaml*) in the repo contains the following configuration:
-
-```yaml
-globalTimeout: 90
-testSuiteTimeout: 90
-testSuiteStep: 90
+```js
+tunnel: true,
 ```
 
-Global timeout, testSuite timeout, and testSuite timeout are set to 90 minutes.
- 
-The target platform is set to Windows. Please set the *[runson]* key to *[mac]* if the tests have to be executed on the macOS platform.
+## Contributions
 
-```yaml
-runson: win
-```
+Contributions are welcome. Open an issue to discuss your idea before submitting a pull request. When reporting bugs, include your Node.js version, OS, and Jest version.
 
-Playwright-Jest js files in the 'Tests' folder contain the Test Scenario run on the HyperExecute grid. In the example, the Test file *tests/test_4.spec.js* run in parallel on the basis of scenario by using the specified input combinations.
+## TestMu AI (Formerly LambdaTest) Community
 
-```yaml
-matrix:
-  os: [linux]
-  files: ["hypblogsearch.test.js","ltblogsearch.test.js","hyperexecute.test.js","lambdatest.test.js"]
+Connect with testers and developers in the [TestMu AI Community](https://community.testmuai.com/). Ask questions, share what you are building, and discuss best practices in test automation and DevOps.
+  
+## TestMu AI (Formerly LambdaTest) Certifications
 
-```
+Earn free [TestMu AI Certifications](https://www.testmuai.com/certifications/) for testers, developers, and QA engineers. Validate your skills in Selenium, Cypress, Playwright, Appium, Espresso and more. Industry-recognized, shareable on LinkedIn, and built by practitioners, not marketers.
 
-The *testSuites* object contains a list of commands (that can be presented in an array). In the current YAML file, commands for executing the tests are put in an array (with a '-' preceding each item). The npx command is used to run tests in *.js* files. The tags are mentioned as an array to the *methods* key that is a part of the matrix.
+## Learning Resources by TestMu AI (Formerly LambdaTest)
 
-```yaml
-testSuites:
-  - npm test -- $files
-```
+Learn modern testing through tutorials, guides, videos, and weekly updates:
 
-### Pre Steps and Dependency Caching
+* [TestMu AI Blog](https://www.testmuai.com/blog/)
+* [TestMu AI Learning Hub](https://www.testmuai.com/learning-hub/)
+* [TestMu AI on YouTube](https://www.youtube.com/@TestMuAI)
+* [TestMu AI Newsletter](https://www.testmuai.com/newsletter/)
+  
+## LambdaTest is Now TestMu AI
 
-Dependency caching is enabled in the YAML file to ensure that the package dependencies are not downloaded in subsequent runs. The first step is to set the Key used to cache directories.
+On **January 12, 2026**, [LambdaTest evolved to TestMu AI](https://www.testmuai.com/lambdatest-is-now-testmuai/), the world's first fully autonomous **Agentic AI Quality Engineering Platform**.
 
-```yaml
-cacheKey: '{{ checksum "package-lock.json" }}'
-```
+Same team. Same infrastructure. Same customer accounts. All existing LambdaTest logins, scripts, capabilities, and integrations continue to work without change.
 
-Set the array of files & directories to be cached. In the example, all the packages will be cached in the *CacheDir* directory.
+Find the new home for [LambdaTest](https://www.testmuai.com).
 
-```yaml
-cacheDirectories:
-  - node_modules
-```
+### How LambdaTest Evolved into TestMu AI
 
-Steps (or commands) that must run before the test execution are listed in the *pre* run step. In the example, the packages listed in *requirements.txt* are installed using the *npm install* command.
+In 2017, we launched LambdaTest with a simple mission: make testing fast, reliable, and accessible. As LambdaTest grew, we expanded into Test Intelligence, Visual Regression Testing, Accessibility Testing, API Testing, and Performance Testing, covering the full depth of the testing lifecycle.
 
-```yaml
-pre:
-  - npm install
-```
+As software development entered the AI era, testing had to evolve, too. We rebuilt the architecture to be AI-native from the ground up, with autonomous agents that **plan, author, execute, analyze, and optimize tests** while keeping humans in the loop. The platform integrates with your repos, CI, IDEs, and terminals, continuously learning from every code change and development signal.
 
-### Artifacts Management
+That evolution earned a new name: **TestMu AI**, built for an AI-first future of quality engineering. TestMu is not a new name for us. It is the name of our annual community conference, which has brought together 100,000+ quality engineers to discuss how AI would reshape testing, long before that became an industry norm. 
 
-The *mergeArtifacts* directive (which is by default *false*) is set to *true* for merging the artifacts and combing artifacts generated under each task.
+What started as a high-performance cloud testing platform has transformed into an AI-native, multi-agent system powering a connected, end-to-end quality layer. That evolution defined a new identity: LambdaTest evolved into TestMu AI, built for an AI-first future of quality engineering.
 
-The *uploadArtefacts* directive informs HyperExecute to upload artifacts [files, reports, etc.] generated after task completion. In the example, *path* consists of a regex for parsing the directory (i.e. *reports* that contains the test reports).
+## Support
 
-```yaml
-mergeArtifacts: true
-
-uploadArtefacts:
-  [{
-    "name": "Reports",
-    "path": ["Reports\\"]
-  }]
-```
-
-HyperExecute also facilitates the provision to download the artifacts on your local machine. To download the artifacts, click on Artifacts button corresponding to the associated TestID.
-
-
-## Test Execution
-
-The CLI option *--config* is used for providing the custom HyperExecute YAML file (i.e. *yaml/win/.hyperexecute_matrix.yaml*). Run the following command on the terminal to trigger the tests in Test file Scenario on the HyperExecute grid.
-
-```bash
-./hyperexecute --config --verbose yaml/win/.hyperexecute_matrix.yaml
-```
-
-Visit [HyperExecute Automation Dashboard](https://automation.lambdatest.com/hyperexecute) to check the status of execution:
-
-## Run Playwright-Jest tests on Windows and Linux platforms
-
-The CLI option *--config* is used for providing the custom HyperExecute YAML file (i.e. *yaml/win/.hyperexecute_autosplits.yaml* for Windows and *yaml/linux/.hyperexecute_autosplits.yaml* for Linux).
-
-Run the following command on the terminal to trigger tests on Windows platform:
-
-```bash
-./hyperexecute --config --verbose yaml/win/.hyperexecute_autosplits.yaml
-```
-
-Run the following command on the terminal to trigger tests on Linux platform:
-
-```bash
-./hyperexecute --config --verbose yaml/win/.hyperexecute_autosplits.yaml
-```
-
-## Secrets Management
-
-In case you want to use any secret keys in the YAML file, the same can be set by clicking on the *Secrets* button the dashboard.
-
-
-All you need to do is create an environment variable that uses the secret key:
-
-```yaml
-env:
-  AccessKey: ${{.secrets.AccessKey}}
-```
-
-## Navigation in Automation Dashboard
-
-HyperExecute lets you navigate from/to *Test Logs* in Automation Dashboard from/to *HyperExecute Logs*. You also get relevant get relevant Playwright test details like video, network log, commands, Exceptions & more in the Dashboard. Effortlessly navigate from the automation dashboard to HyperExecute logs (and vice-versa) to get more details of the test execution.
-
-
-## We are here to help you :)
-* LambdaTest Support: [support@lambdatest.com](mailto:support@lambdatest.com)
-* HyperExecute HomePage: https://www.lambdatest.com/support/docs/getting-started-with-hyperexecute/
-* Lambdatest HomePage: https://www.lambdatest.com
+Got a question? Email [support@testmuai.com](mailto:support@testmuai.com) or chat with us 24x7 from our chat portal.
