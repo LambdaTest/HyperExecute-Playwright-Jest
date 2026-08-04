@@ -1,16 +1,30 @@
 ---
-version: '0.1'
-matrix:
-  os: [win]
-  files: ["hypblogsearch.test.js","ltblogsearch.test.js","hyperexecute.test.js","lambdatest.test.js"]
+version: "0.1"
+
 runson: ${matrix.os}
+
+matrix:
+  os:
+    - win
+  files:
+    - exampleheading.test.js
+    - examplelink.test.js
+    - exampleparagraph.test.js
+    - exampletitle.test.js
+
 pre:
   - npm install
   - npx playwright install
+
 cacheKey: '{{ checksum "package-lock.json" }}'
+
 cacheDirectories:
   - node_modules
-testSuites:
-  - npm test -- $files
 
-jobLabel: [playwright-JestJS, win, matrix]
+testSuites:
+  - npx jest "$files" --runInBand
+
+jobLabel:
+  - playwright-JestJS
+  - win
+  - matrix
